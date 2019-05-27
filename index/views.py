@@ -107,12 +107,15 @@ def fix(request):
 def fix_download(request):
     global filename, fix_filename
     if request.method == 'GET':
-        # file = open(filename, 'r')
-        file = open(fix_filename, 'rb')
-        response = FileResponse(file)
-        response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment;filename="{}"'.format(filename)
-        return response
+        try:
+            # file = open(filename, 'r')
+            file = open(fix_filename, 'rb')
+            response = FileResponse(file)
+            response['Content-Type'] = 'application/octet-stream'
+            response['Content-Disposition'] = 'attachment;filename="{}"'.format(filename)
+            return response
+        except:
+            return HttpResponse('0 File Not Found/File Needn\'t Fix')
     else:
         return HttpResponse('Bad Request')
 
@@ -154,19 +157,31 @@ JsonError = json_error
 def bar_base() -> Bar:
     global filename
     df = pd.read_csv(filename)
+    df=df.round(0)
+    freq='{}min'.format(1440/len(df))
+    time_list = [str(x)[-8:] for x in pd.timedelta_range(start='00:00:00', end='24:00:00', freq=freq)]
+    time_list[-1]='24:00:00'
+    xaxis=time_list[1:]
     c = (
         Bar(init_opts=opts.InitOpts(theme=ThemeType.ESSOS))
-            .add_xaxis(list(range(len(df))))
-            .add_yaxis("流量AV", list(df.iloc[:, 0]))
+            .add_xaxis(xaxis)
+            # .add_yaxis("流量AV", list(df.iloc[:, 0]))
             .add_yaxis("饱和度DS", list(df.iloc[:,1]))
             .set_global_opts(title_opts=opts.TitleOpts(title="流量-饱和度柱状图"))
-            .dump_options()
+
     )
+    d=(
+        Line()
+            .add_xaxis(xaxis)
+            .add_yaxis("流量AV", list(df.iloc[:, 0]))
+
+    )
+    c.overlap(d)
     return c
 
 class ChartView(APIView):
     def get(self, request, *args, **kwargs):
-        return JsonResponse(json.loads(bar_base()))
+        return JsonResponse(json.loads(bar_base().dump_options()))
 
 
 class IndexView(APIView):

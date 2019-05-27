@@ -8,26 +8,26 @@
 
 </head>
 <body>
-    <div id="bar" style="width:2000px; height:800px;"></div>
-    <script>
-        var chart = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
+<div id="bar" style="width:2000px; height:800px;"></div>
+<script>
+    var chart = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
 
-        $(
-            function () {
-                getData(chart);
-            }
-        );
-
-        function getData() {
-            $.ajax({
-                type: "GET",
-                url: "/bar/",
-                dataType: 'json',
-                success: function (result) {
-                    chart.setOption(result.data);
-                }
-            });
+    $(
+        function () {
+            getData(chart);
         }
-    </script>
+    );
+
+    function getData() {
+        $.ajax({
+            type: "GET",
+            url: "/bar/",
+            dataType: 'json',
+            success: function (result) {
+                chart.setOption(result.data);
+            }
+        });
+    }
+</script>
 </body>
 </html>

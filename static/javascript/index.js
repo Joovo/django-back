@@ -41,7 +41,7 @@ $(document).ready(function () {
         var data_type = "2";
         var Int = $('#Int').val();
         var detector = $('#detector').val();
-        var date = $('#date').val();
+        var date = $('#datetimepicker').find("input").val();
         var freq = $('#select-freq').val();
         var pattern = $('#select-pattern').val();
         var data = {
@@ -52,8 +52,6 @@ $(document).ready(function () {
             "freq": freq,
             "pattern": pattern,
         };
-        // alert("freq: " + freq + " pattern: " + pattern);
-        // check date format
         var dateFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
         if (dateFormat.test(date) === false) {
             alert("日期格式错误!")
@@ -109,13 +107,25 @@ $(document).ready(function () {
         }
     });
     $("#btn-fix-2").click(function () {
-        var a = document.createElement('a');
-        a.href = "/fix_download/";
-        a.click();
+        $.get('/fix_download/', function (data, textStatus) {
+            if (data[0] === '0') {
+                alert("无需修复!");
+            } else {
+                var a = document.createElement('a');
+                a.href = "/fix_download/";
+                a.click();
+            }
+        });
     });
     $("#btn-pic").click(function () {
         var a = document.createElement('a');
         a.href = "/pic/";
         a.click();
     });
+    $("#datetimepicker").datetimepicker({
+        format: 'YYYY-MM-DD',
+        locale: moment.locale('zh-cn'),
+        defaultDate: "2018-11-01"
+    });
+
 });
