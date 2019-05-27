@@ -1,14 +1,13 @@
-# 计算H市上城区一段时间内每天交叉口，车道交通流量和饱和度信息的Django后端代码
+计算H市上城区一段时间内每天交叉口，车道交通流量和饱和度信息的Django后端代码。
 
 # 主要页面：
 3个静态页面，index1/,index2/,pic/
 7个请求，index1,index2,download,submit,fix,fix_download,pic
 
 # 文件说明：
-
-
 ## 1.output.py
 计算配置表即程序1
+
 ## 2.PL_parse.py 
 计算交叉口、日期、车道、频率、模式下的饱和度和流量即程序2
 ## 3.fix_data.py
