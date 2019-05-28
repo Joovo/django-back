@@ -52,6 +52,8 @@ def submit(request):
             date = body.get('date')
             freq = body.get('freq')
             pattern = body.get('pattern')
+            if pd.to_datetime(date)<pd.to_datetime('2018-11-01') or pd.to_datetime(date)>pd.to_datetime('2018-11-30'):
+                return HttpResponse('2 Date Not Found')
             filename = './output_2/{}/{}/{}-{}-{}.csv'.format(freq, pattern, Int, date, detector)
             if not os.path.isfile(filename):
                 try:

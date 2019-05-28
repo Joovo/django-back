@@ -66,7 +66,10 @@ $(document).ready(function () {
                         //alert("数据: \n" + data + "\n状态: " + textStatus);
                         // response success
                         if (data[0] === '0') {
-                            alert("文件不存在!");
+                            alert("该交叉口数据文件不存在!");
+                            download_flag = false;
+                        } else if (data[0] === '2') {
+                            alert("该日期数据文件不存在!");
                             download_flag = false;
                         } else {
                             alert("运行完成!");
