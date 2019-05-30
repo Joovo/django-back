@@ -43,12 +43,13 @@ def fix(Int, detector, date, freq, pattern):
                 raise FileNotFoundError
             return fix_file_path
         except FileNotFoundError:
-            # try:
-            #     file_path = './output_2/{}/{}/'.format(freq, pattern)
-            #     for i in os.listdir(file_path):
-            #         if '{}-{}'.format(Int, date) in i and '{}-{}-{}'.format(Int, date, detector) not in i:
-            #             return file_path + i
-            #     else:
-            #         return './修复后全部数据/{}/{}-{}-{}.csv'.format(Int, Int, date, detector)
-            # except:
-            return '0 Fix Fail'
+            try:
+                file_dir_path = './output_2/{}/{}/'.format(freq, pattern)
+                for i in os.listdir(file_dir_path):
+                    fix_file_path=file_dir_path+i
+                    if '{}-{}'.format(Int, date) in i and '{}-{}-{}'.format(Int, date, detector) not in i:
+                        return fix_file_path
+                else:
+                    return '0 Fix Fail'
+            except:
+                return '0 Fix Fail'
