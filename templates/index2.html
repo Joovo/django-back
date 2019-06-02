@@ -21,109 +21,108 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <script src="../static/javascript/index.js"></script>
 </head>
 
 <body>
 
-<div class="container">
-    <div class="panel">
-        <div class="row">
+    <div class="container">
+        <div class="panel">
             <div class="row">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-link btn-lg btn-block" data-toggle="dropdown">
-                        程序二 <span class="caret"></span>
+                <div class="row">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-link btn-lg btn-block" data-toggle="dropdown">
+                        单车道数据处理 <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/index1/">程序一</a></li>
-                    </ul>
-                </div>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/index1/">交叉口数据处理</a></li>
+                        </ul>
+                    </div>
 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <table class="table table-hover">
-                    <tbody>
-                    <tr>
-                        <td>交叉口编号</td>
-                        <td>
-                            <input type="text" class="form-control" id="Int" placeholder="请输入交叉口编号">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>车道号</td>
-                        <td>
-                            <input type="text" class="form-control" id="detector" placeholder="请输入车道编号">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>日期</td>
-                        <td>
-                            <div class='input-group date' id='datetimepicker'>
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
+            <div class="row">
+                <div class="col-lg-8">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>交叉口编号</td>
+                                <td>
+                                    <input type="text" class="form-control" id="Int" placeholder="请输入交叉口编号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>车道号</td>
+                                <td>
+                                    <input type="text" class="form-control" id="detector" placeholder="请输入车道编号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>日期</td>
+                                <td>
+                                    <div class='input-group date' id='datetimepicker'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
-                            </div>
+                                    </div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>时间间隔</td>
-                        <td>
-                            <select id="select-freq" class="selectpicker">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>时间间隔</td>
+                                <td>
+                                    <select id="select-freq" class="selectpicker">
                                 <option value="30min">30min</option>
                                 <option value="5min">5min</option>
                                 <option value="15min">15min</option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>输出选项</td>
-                        <td>
-                            <select id="select-pattern" class="selectpicker">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>输出选项</td>
+                                <td>
+                                    <select id="select-pattern" class="selectpicker">
                                 <option value="1">模式一:饱和度+流量</option>
                                 <option value="2">模式二:饱和度+流量+PL</option>
                                 <option value="3">模式三:PL</option>
                             </select>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <p>
-                    <button type="button" class="btn btn-primary  btn-block" id="btn-submit-2">提交</button>
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p>
-                    <button type="button" class="btn btn-primary btn-block" id="btn-download-2">下载</button>
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p>
-                    <button type="button" class="btn btn-primary btn-block" id="btn-pic">绘图</button>
-                </p>
-            </div>
-            <div class="col-md-2 ">
-                <button type="button" class="btn btn-primary btn-block" id="btn-fix-2">修复
+            <div class="row">
+                <div class="col-md-2">
+                    <p>
+                        <button type="button" class="btn btn-primary  btn-block" id="btn-submit-2">提交</button>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        <button type="button" class="btn btn-primary btn-block" id="btn-download-2">下载</button>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        <button type="button" class="btn btn-primary btn-block" id="btn-pic">绘图</button>
+                    </p>
+                </div>
+                <div class="col-md-2 ">
+                    <button type="button" class="btn btn-primary btn-block" id="btn-fix-2">修复
                 </button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>

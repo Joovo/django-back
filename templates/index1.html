@@ -21,56 +21,56 @@
 
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script src="../static/javascript/index.js"></script>
 </head>
 
 <body>
-<div class="container">
-    <div class="panel">
-        <div class="row">
-            <div class="btn-group">
-                <button type="button" class="btn btn-link btn-lg btn-block" data-toggle="dropdown">
-                    程序一 <span class="caret"></span>
+    <div class="container">
+        <div class="panel">
+            <div class="row">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-link btn-lg btn-block" data-toggle="dropdown">
+                    交叉口数据处理 <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/index2/">程序二</a></li>
-                </ul>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/index2/">单车道数据处理</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>交叉口编号</td>
+                                <td>
+                                    <input type="text" class="form-control" id="Int" placeholder="请输入交叉口编号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>配置表编号</td>
+                                <td>
+                                    <input type="text" class="form-control" id="configuenum" placeholder="默认和交叉口相同">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-block " id="btn-submit-1">提交</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-block" id="btn-download-1">下载
+                </button>
+                </div>
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <table class="table table-hover">
-                    <tbody>
-                    <tr>
-                        <td>交叉口编号</td>
-                        <td>
-                            <input type="text" class="form-control" id="Int" placeholder="请输入交叉口编号">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>配置表编号</td>
-                        <td>
-                            <input type="text" class="form-control" id="configuenum" placeholder="默认和交叉口相同">
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block " id="btn-submit-1">提交</button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block" id="btn-download-1">下载
-                </button>
-            </div>
-        </div>
-
     </div>
-</div>
 </body>
+
 </html>
