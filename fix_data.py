@@ -53,15 +53,14 @@ def fix(Int, detector, date, freq, pattern):
                 # else:
                 #     return '0 Fix Fail'
                 lane = pd.read_csv('lane.csv', header=0)
-                straight_way_df = lane[
-                    (lane.iloc[:, 3] == '南直') & (lane.iloc[:, 3] == '北直') & (lane.iloc[:, 3] == '西直') & (lane.iloc[:,
-                                                                                                         3] == '东直') & (
+                PL=get_PL(Int,detector)
+                df = lane[
+                    (lane.iloc[:, 0] == Int) & (lane.iloc[:, 2] == PL) & (
                             lane.iloc[:, 4] != 0)]
 
-                use_df = straight_way_df[straight_way_df[:, 0] == Int]
-                detector_count = use_df[use_df[:, 0] == Int].iloc[0, 4]
+                use_df = df[df[:, 0] == Int]
                 file_dir_path = './output_2/{}/{}/'.format(freq, pattern)
-                for d in detector_count:
+                for d in use_df.iloc[0, 5:9]:
                     fix_file_path = file_dir_path + '{}-{}-{}.csv'.format(Int, date, detector)
                     if os.path.isfile(fix_file_path):
                         return fix_file_path
@@ -69,3 +68,10 @@ def fix(Int, detector, date, freq, pattern):
                     return '0 Fix Fail'
             except:
                 return '0 Fix Fail'
+
+def get_PL(Int,detector):
+    configue_file='./data/配置表/{}.xlsx'.format(Int)
+    configue_df=pd.read_excel(configue_file,header=0)
+    select_df=configue_df[(configue_df.iloc[:,2]==detector) | (configue_df.iloc[:,3]==detector)| (configue_df.iloc[:,4]==detector)|(configue_df.iloc[:,3]==detector)|(configue_df.iloc[:,5]==detector)]
+    PL=select_df.iloc[0,1]
+    return PL
